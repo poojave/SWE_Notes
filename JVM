@@ -1,1 +1,29 @@
+It is possible that the current GC algorithm is not correct for your use case/application, explore other ones.
+    Java 7/8 has Parallel GC as default GC
+    For some applications with high jvm memory usage & heap size larger than 4GB, G1 GC is more efficient.
+    java -XX:+UseG1GC -jar Application.java
+    For some applications with heap less than 4GB, CMS is more efficient.
+    XX:+UseConcMarkSweepGC -XX:-UseParNewGC -XX:CMSInitiatingOccupancyFraction=60 -XX:+UseCMSInitiatingOccupancyOnly
+Since java 8 we also have -XX:+UseStringDeduplication to further optimize unnecessary use of same strings in jvm memory
+For short term fix use the following formula for setting heap memory: Peak Usage + 20% of Peak Usage as Buffer < 70% of Reserved Memory
+
+Pod High JVM Memory Usage
+    Tweak GC algorithm
+    Adjust Peak Values
+
+Redis Cache Evictions
+    Analyze top contributors
+    Adjust TTL
+S@indiamart123
+RDS Free Memory
+    Analyze slow queries and unused index
+    Validate alert threshold
+
+Pod High CPU Usage
+    Validate thread count
+    Analyze high impact apis
+
+Mongodb High CPU Usage
+    Check load distribution
+    Analyze slow queries and unused index
 
