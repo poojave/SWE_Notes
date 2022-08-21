@@ -79,3 +79,7 @@ JVM has five types of GC implementations:
         Similar to G1, Z Garbage Collector partitions the heap, except that heap regions can have different sizes.
         java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC Application.java
         From version 15 on, java -XX:+UseZGC Application.java
+
+Ref:
+https://www.baeldung.com/jvm-garbage-collectors
+https://docs.google.com/document/d/1FYFdvdL_m94ZXrNImFI8o0B3Y6S1VoRkH1ghNmzjPrk/edit
