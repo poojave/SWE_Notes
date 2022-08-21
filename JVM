@@ -14,7 +14,7 @@ Pod High JVM Memory Usage
 Redis Cache Evictions
     Analyze top contributors
     Adjust TTL
-S@indiamart123
+
 RDS Free Memory
     Analyze slow queries and unused index
     Validate alert threshold
@@ -27,3 +27,55 @@ Mongodb High CPU Usage
     Check load distribution
     Analyze slow queries and unused index
 
+Garbage Collection tracks each and every object available in the JVM heap space, and removes the unused ones.
+Basically, GC works in two simple steps, known as Mark and Sweep:
+Mark – this is where the garbage collector identifies which pieces of memory are in use and which aren't.
+Sweep – this step removes objects identified during the “mark” phase.
+
+Advantages:
+    No manual memory allocation/deallocation handling because unused memory space is automatically handled by GC
+    No overhead of handling Dangling Pointer
+    Automatic Memory Leak management (GC on its own can't guarantee the full proof solution to memory leaking; however,
+    it takes care of a good portion of it)
+Disadvantages:
+    Since JVM has to keep track of object reference creation/deletion, this activity requires more CPU power than the
+    original application. It may affect the performance of requests which require large memory.
+    Programmers have no control over the scheduling of CPU time dedicated to freeing objects that are no longer needed.
+    Using some GC implementations might result in the application stopping unpredictably.
+    Automatized memory management won't be as efficient as the proper manual memory allocation/deallocation.
+
+JVM has five types of GC implementations:
+
+    Serial Garbage Collector
+        This is the simplest GC implementation, as it basically works with a single thread. As a result, this GC implementation
+        freezes all application threads when it runs. Therefore, it's not a good idea to use it in multi-threaded applications,
+        like server environments.
+        java -XX:+UseSerialGC -jar Application.java
+    Parallel Garbage Collector
+        It's the default GC of the JVM, and sometimes called Throughput Collectors. Unlike Serial Garbage Collector,
+        it uses multiple threads for managing heap space, but it also freezes other application threads while performing GC.
+        java -XX:+UseParallelGC -jar Application.java
+    CMS Garbage Collector
+        The Concurrent Mark Sweep (CMS) implementation uses multiple garbage collector threads for garbage collection. It's designed for applications that prefer
+        shorter garbage collection pauses, and can afford to share processor resources with the garbage collector while the application is running. As of Java 9,
+        the CMS garbage collector has been deprecated. Therefore, JVM prints a warning message if we try to use it:
+        java -XX:+UseParNewGC -jar Application.java
+    G1 Garbage Collector
+        G1 (Garbage First) Garbage Collector is designed for applications running on multi-processor machines with large memory space. It's available from the JDK7 Update 4 and in later releases.
+        G1 collector will replace the CMS collector, since it's more performance efficient.
+        Unlike other collectors, the G1 collector partitions the heap into a set of equal-sized heap regions, each a contiguous range of virtual memory.
+        When performing garbage collections, G1 shows a concurrent global marking phase (i.e. phase 1, known as Marking) to determine the liveness of objects throughout the heap.
+        After the mark phase is complete, G1 knows which regions are mostly empty. It collects in these areas first, which usually yields a significant amount of
+        free space (i.e. phase 2, known as Sweeping). That's why this method of garbage collection is called Garbage-First.
+        java -XX:+UseG1GC -jar Application.java
+    Z Garbage Collector
+        ZGC (Z Garbage Collector) is a scalable low-latency garbage collector that debuted in Java 11 as an experimental option for Linux. JDK 14 introduced  ZGC under
+        the Windows and macOS operating systems. ZGC has obtained the production status from Java 15 onwards.
+        ZGC performs all expensive work concurrently, without stopping the execution of application threads for more than 10 ms, which makes it suitable for applications
+        that require low latency. It uses load barriers with colored pointers to perform concurrent operations when the threads are running, and they're used to keep
+        track of heap usage.
+        Reference coloring (colored pointers) is the core concept of ZGC. It means that ZGC uses some bits (metadata bits) of reference to mark the state of the object.
+        It also handles heaps ranging from 8MB to 16TB in size. Furthermore, pause times don't increase with the heap, live-set, or root-set size.
+        Similar to G1, Z Garbage Collector partitions the heap, except that heap regions can have different sizes.
+        java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC Application.java
+        From version 15 on, java -XX:+UseZGC Application.java
