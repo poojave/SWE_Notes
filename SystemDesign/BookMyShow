@@ -1,0 +1,4 @@
+Ticket booking system:
+
+Single tomcat server - Java sybchronisation apis
+Multikple server (distributed system) - Unique constraint voilation
