@@ -1,4 +1,6 @@
 Ticket booking system:
 
-Single tomcat server - Java sybchronisation apis
-Multikple server (distributed system) - Unique constraint voilation
+    Single tomcat server - Java synchronisation apis
+    Multiple server (distributed system) - Unique constraint violation
+
+Ref: https://www.youtube.com/watch?v=s4mO1Ak9G84
