@@ -1,0 +1,8 @@
+Locking, Ref: https://www.youtube.com/watch?v=DvF3AsTglUU&t=345s
+    1. Semaphore
+        1.1 Shared resource locking, control sharing count
+        1.2 Like sharing washrooms
+    2. Mutex
+        2.1 Add locking, do not allow sharing
+        2.2 Like private washrooms
+

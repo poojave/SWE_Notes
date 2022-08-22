@@ -1,0 +1,37 @@
+Beyond a Million Ticket Sales per Day using Redis, Ref: https://www.youtube.com/watch?v=eLDDuudD4qA
+2.8 m tickets, 18 tickets sold every seconds
+    Before Redis:
+        1. No horizontal scaling
+        2. Slow queries
+        3. DB locks
+        4. Purge jobs
+
+    After Redis:
+        1. Demand fill cache
+        2. TTL
+        3. Scalable as it's cluster of Redis
+        4. Pre computed reads
+        5. No DB locks
+
+    Write back c -> service (track write request) -> db
+        1. Initiate txn (100K people)
+        2. Load layout
+        3. Select seat
+        4. Other calls
+        5. Payments (4K people)
+
+        Problems:
+            1. On demand sharding is not possible
+            2. Not confirmed Txn, should be purged to keep db load low (100-4 = 96K trx)
+            3. Deadlocks during concurrency
+            4. Revamp for less issue and downtime
+
+            Solutions:
+                1. INCR txn ID and shard key
+                2. Shard key will determine which redis cluster it will go
+                Advantage:
+                    1. Fast txn data look up
+                    2. Just TTL and no jobs
+                    3. Response time from min to ms
+                    4. App level sharing enables us to scale on runtime and on demand
+

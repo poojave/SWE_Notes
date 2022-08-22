@@ -1,0 +1,12 @@
+Cache strategies:
+    1. Write through c -> db
+    2. Write around db -> c
+    3. Write back c -> service (track write request) -> db
+
+How to make cache(Redis) fault tolerant?
+    1. Regular interval snapshot
+    2. Log reconstruction
+
+How to make cache(Redis) highly available?
+    1. Add replicas
+    2. Since it cause inconsistencies, we can ensure availability by adding slave. So, write will be going to master and read from slave.
