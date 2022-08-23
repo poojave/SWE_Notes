@@ -4,6 +4,8 @@ Properties of distributed locks
     2. Deadlock free - TTL
     3. Mutually exclusive - Unique locking number
 
+Distributed locks implemented with Redis. Ref: https://www.youtube.com/watch?v=2hIxBJa23M0
+
 Uber usecase of consistency? Ref: https://www.youtube.com/watch?v=MDuagr729aU
     1. Trip accepted by Driver -> 2. Trip cancelled by Rider
     Ideally there should be lock after request1 and request2 should go into exception state

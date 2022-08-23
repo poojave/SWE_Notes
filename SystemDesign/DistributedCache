@@ -1,0 +1,11 @@
+Ref: https://www.youtube.com/watch?v=iuqZvajTOyA
+- Functional (put, get) and non-functional (high scalability, high availability, high performance) requirements.
+- Least recently used (LRU) cache.
+- Dedicated cache cluster, co-located cache
+- MOD hashing, consistent hashing.
+- Cache client.
+- Static vs dynamic cache servers list configuration.
+- Leader-follower (master-slave) data replication.
+- Cache consistency, data expiration, local and remote cache, security, monitoring and logging.
+- Memcached, Redis.
+
