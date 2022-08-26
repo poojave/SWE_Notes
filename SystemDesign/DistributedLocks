@@ -6,6 +6,47 @@ Properties of distributed locks
 
 Distributed locks implemented with Redis. Ref: https://www.youtube.com/watch?v=2hIxBJa23M0
 
+Distributed locks using redis, Ref: https://rohansaraf.medium.com/distributed-locking-with-redis-ecb0773e7695
+    What happens if a client acquires a lock and dies without releasing the lock. Other clients will think that the resource has been locked
+    and they will go in an infinite wait. (Max lock acquire sec)
+
+    void releaseLock(key, client){
+      value = execute(GET, key)
+      if(client==value && value!=null)
+        execute(DEL, key)
+      else
+        log("error while releasing lock for key %s",key)
+    }
+    This needs to be done because suppose a client takes too much time to process the resource during which the lock in redis expires, and other client acquires
+    the lock on this key. Once the first client has finished processing, it tries to release the lock as it had acquired the lock earlier. If we didn’t had the check of
+    value==client then the lock which was acquired by new client would have been released by the old client, allowing other clients to lock the resource and process
+    simultaneously along with second client, causing race conditions or data corruption, which is undesired. Following is a sample code.
+
+    key = generateKeys(){
+      return 'specialUUID'
+    }
+    value = 'client_name' // thread name or app name
+    if(acquireLock(key,value){
+      performOperation()// sleep for 2 seconds or network call
+      releaseLock(key, value)
+    }
+
+    Complexity arises when we have a list of shared of resources. In that case we will be having multiple keys for the multiple resources.
+    One should follow all-or-none policy i.e lock all the resource at the same time, process them, release lock, OR lock none and return.
+    No partial locking should happen.
+
+    The above method guarantees:
+
+    Deadlock free locking — as we are using ttl, which will automatically release the lock after some time
+    Eliminated infinite wait
+
+    But still this has a couple of flaws which are very rare and can be handled by the developer:
+
+    1. If a client dies after locking, other clients need to for a duration of TTL to acquire the lock — will not cause any harm though.
+    2. If a client takes too long to process, during which the key expires, other clients can acquire lock and process simultaneously causing race conditions.
+    Above two issues can be handled by setting an optimal value of TTL, which depends on the type of processing done on that resource.
+    So this was all it on locking using redis.
+
 Uber usecase of consistency? Ref: https://www.youtube.com/watch?v=MDuagr729aU
     1. Trip accepted by Driver -> 2. Trip cancelled by Rider
     Ideally there should be lock after request1 and request2 should go into exception state

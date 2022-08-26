@@ -1,0 +1,92 @@
+Cache: Ref:https://www.youtube.com/watch?v=iuqZvajTOyA
+    DS used - Hash table
+    Add value in cache and update hashtable as well. We can use queue to implement cache. (Doubly linked list)
+    (Head)D<->C<->B<->A(Tail), Has table - A|B|C|D
+    Queue after get operation on B
+    (Head)B<->D<->C<->A(Tail)
+    Queue after get operation on B
+    (Head)A<->B<->D<->C(Tail)
+    New item to be added - E
+    (Head)E<->A<->B<->D(Tail) - Remove item C(Tail)
+
+    class Node {
+        private final String key;
+        private String value;
+
+        private Node prev;
+        private Node next;
+
+        public cache(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    // LRU cache implementation
+    class LRUCache {
+        private final Map<String, Node> map;
+        private final int capacity;
+
+        private Node head = null;
+        private Node tail = null;
+
+        public LRUCache(Map<String, Node> map, int capacity) {
+            this.map = map;
+            this.capacity = capacity;
+        }
+
+        public String get(String key){
+            if(!map.getContainsKey(key)) {
+                return null;
+            }
+            Node node = map.get(key);
+            deleteFromCurrentPositionInList(key);
+            setListHead(key);
+
+            return node.getValue();
+        }
+
+        public void put(String key){
+            if(map.getContainsKey(key)) { // item exists in cache, just make it at the head
+                Node node = map.get(key);
+                deleteNodeFromList(key);
+                setListHead(key);
+            } else {
+                if(map.size()>=capacity) { // if hash table is full
+                    removeFromHashTable(tail.getKey());
+                    deleteFromList(tail);
+                    setListHead(key);
+                }
+                Node node = Node(key); // create node, update hash table
+                map.put(key, node);
+                setListHead(key);
+            }
+        }
+    }
+
+Distributed Cache:
+    Sharded nodes
+        1. A-M
+        2. N-Z
+    Dedicated cache cluster (If cache is stored at separate machine)
+        1. Better isolation
+        2. Flexibility in choosing hardware
+        3. Can be used by multiple services
+    Co-located cache cluster (If cache is in-memory)
+        1. No extra hardware and operational cost
+        2. scale together with services
+
+Mod hash is bad choice than consistent hashing. why?
+    CacheHostNumber = HASH_FUNCTION(key) MOD NumberOFCacheHosts
+    hash MOD 3 = 0 (0th cache server)
+    But if one node died, several host will start choosing completely different cache hosts then they did previously -> lots of cache miss
+    Consistent hashing, the cache server deals with the range of items from one to next host basis on mode function
+
+Who is responsible of running hash calculations and routing?
+    1. Cache client - a small weight library, integrated with service and knows all of the cache servers
+    2. All cache client should have same list of servers
+    3. Stores list of server in sorted order (by hash value, TreeMap), uses binary search O(log n), uses UDP/TCP protocol
+    4. List of server [save in a conf file, deploy to server]
+        Since the host keep changes in case of hardware failure. It would need manual changes then. To automate this process
+        we can add zookeeper to discover host, server, health of cache. The soln is high performant as we can easily add replicas.
+        It also manages leaders, followers and failures

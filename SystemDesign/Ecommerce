@@ -1,0 +1,20 @@
+Ecommerce design, Ref: https://www.youtube.com/watch?v=QznaOSk20nU
+    1. Inventory: Search, List
+        1.1 Elastic search to search product queries of user
+        1.2 Can ES be used to maintain inventory? Initially yes, but with scaling,
+            1.2.1 it would cause issues as it has no locking mechanism.
+            1.2.2 it might be expansive too to save all the data there
+            1.2.3 It might be a bad choice when the system grows and has microservice architecture where teams would ask api to share active inventory
+        1.3 RDBMS -> ES
+        1.4 Saving images: S3 with Blob storage (cheap, separate image and db storage)
+    2. Delivery: Status updates, order tracking, notif(email/sms), state machine
+    3. Payment: gateway, any currency
+        3.1 Payment is not successfully done, the user should be redirected to "Thank you" page after txn i.e. 5min
+        3.2 we can add cron job to monitor the txn which has not changed status after 5min, a alert will be triggered on slack for it
+    4. Cart: add/remove items
+    5. Summary
+        5.1 MVP, monolith in beginning
+        5.2 Searching the data?
+        5.3 Monitoring and debugging?
+        5.4 Saving images?
+

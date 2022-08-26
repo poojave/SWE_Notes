@@ -35,3 +35,17 @@ Beyond a Million Ticket Sales per Day using Redis, Ref: https://www.youtube.com/
                     3. Response time from min to ms
                     4. App level sharing enables us to scale on runtime and on demand
 
+Redis at Lyft, Ref: https://www.youtube.com/watch?v=U4WspAKekqM
+    1. Company operate without SREs, believe failure would happen, 100% consistency is a myth
+    2. Do load testing and intentionally fails the clusters in production, so there are less point of failure
+    3. Bear no downtime even while updating configuration
+    4. Uses Envoy (open source proxy tool), chaos monkey
+    5. Focuses on throughput not availability
+    6. Book no one to manage production env. put saviour from cascading failure of nodes
+    7. have added active and passive health checks
+    8. Keep less data on prod
+
+
+Redis follow distributed cluster (master/slave architecture). Ref: https://www.youtube.com/watch?v=yCrSMdjV4sE
+
+Redis scalability, Ref: https://www.youtube.com/watch?v=55TFuBMFWns -> chk RedisUsage.png

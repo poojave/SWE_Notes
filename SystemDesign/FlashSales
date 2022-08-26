@@ -1,0 +1,20 @@
+Flash Sales with Redis, Alibaba. ref: https://www.youtube.com/watch?v=mka-KSHsCJo
+    Three phases:
+        1. Before promotion
+            Customer keeps refreshing event detail page
+        2. During promotion
+            Lots of at the same time orders
+        3. After promotion
+            Queries about order status or cancel orders
+
+    Use DB only?
+        +ve:
+            Row level locking, only request that holds lock can place order and book inventory
+        -ve:
+            Can't handle concurrency, may be blocked by large number of requests
+
+    Business system to handle flash sales:
+        1. Use browser cache and cdn to cache request static data
+        2. Use redis to block invalid request
+        3. Use redis to cache inventory data and accelerate inventory detection
+        4. Use redis to asynchronously write order data to db based on message queue

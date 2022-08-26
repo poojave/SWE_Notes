@@ -4,9 +4,9 @@
     Server does not know who is initiating request, proxy or real client
     Request going forward
     Advantage
-        Selectively intercept the request, send/block request
-        Easy to log/monitor request
-        Cache response, make process faster
+        1. Selectively intercept the request, send/block request
+        2. Easy to log/monitor request
+        3. Cache response, make process faster
 
 Reverse Proxy:
     1. Candidate A put attendance of candidate B
@@ -14,6 +14,6 @@ Reverse Proxy:
     Client does not know who is handling request, proxy or real sever
     Request coming in
     Advantage
-        Security (DDos attack prevention, Firewall, Block bot/hackers)
-        Load balancing
-        Cache response, make process faster
+        1. Security (DDos attack prevention, Firewall, Block bot/hackers)
+        2. Load balancing
+        3. Cache response, make process faster
