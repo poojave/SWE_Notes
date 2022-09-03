@@ -1,0 +1,5 @@
+Serialisation is converting the data struction or object into bytes i.e. machine understandable format.
+Why do we need it?
+    In order to transfer data from one machine to another machine and to keep the information as it is.
+Example?
+    Like talking over phone, we talk and the other machine the receiver's end understand the same information as being said by the speaker.

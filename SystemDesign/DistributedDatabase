@@ -1,1 +1,10 @@
 Design distributed database, Ref: https://www.youtube.com/watch?v=rnZmdmlR-2M
+    Characteristics:
+        1. Highly consistent (Read after most recent write should have latest data), rather than available
+            (Cassandra - Eventual consistency, high availability)
+        2. No ACID
+        3. Operations
+            3.1 create table
+            3.2 put(table, key, value), get(table, key) -> value, delete(table, key), list(table, keys), delete(table)
+        4. Architecture
+        5. What if to increase the sequence number

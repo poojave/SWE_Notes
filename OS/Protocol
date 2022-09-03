@@ -1,4 +1,17 @@
 TCP
 UDP
 FTP
-GOSSIP
+GOSSIP, Ref: https://www.youtube.com/watch?v=qJpPjzg44R8, https://flopezluis.github.io/gossip-simulator/
+    1. Replication control protocol used by distributed systems (Cassandra, distributed db, fault detections), also known as epidemic
+    2. Provide high data avail and reliability
+    3. Use version number to record the state of replica
+    4. 3 strategies to message (Push, Pull, Push-pull)
+    5. Advantage:
+        5.1 Take O(log n) rounds to complete information dissemination
+        5.2 Simple, highly fault tolerant, robust, convergent consistency
+        5.3 Extremely decentralised
+    6. Weakness:
+        6.1 Latency, slow, not so efficient
+        6.2 Debugging is difficult
+        6.3 Can't scale in some situations
+

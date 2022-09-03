@@ -1,0 +1,4 @@
+Redis
+    Usage, Ref: https://university.redis.com/courses/course-v1:redislabs+RU101+2022_08/courseware/3f48285e65d245419daadc40da4a38bc/d8e1b8d6312640088e695e3c0ce6983b/?child=first:
+        1. API ratelimiting using redis hash
+        2. Session cache using redis hash

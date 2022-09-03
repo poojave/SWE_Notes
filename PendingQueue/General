@@ -1,1 +1,15 @@
 1. Elastic search internal working
+2. Tushar Roy channel
+3. Design db with high availability vs design db with high consistency
+4. Rate limiting
+5. Accessing select max(a) from table, will access via cache?
+6. Serialization vs Deserialization
+7. MySQL to MyRocks Migration in Uber’s Distributed Datastores, Ref: https://www.uber.com/en-IN/blog/mysql-to-myrocks-migration-in-uber-distributed-datastores/
+8. Protobuf - https://developers.google.com/protocol-buffers/docs/overview
+9. gRPC - https://grpc.io/
+10. Flink
+11. Data lake
+12. Open source:
+    12.1 https://github.com/redis/redis-doc/issues
+    12.2 https://github.com/redis/redis/issues
+    12.3 https://issues.apache.org/jira/projects/ZOOKEEPER/issues/ZOOKEEPER-3775?filter=allissues&orderby=priority+ASC%2C+updated+DESC

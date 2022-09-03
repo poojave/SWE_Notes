@@ -1,0 +1,79 @@
+Google vertex feature store, Ref: https://www.youtube.com/watch?v=jXD8Sfx4hvQ
+    ML Feature challenge:
+        Hard to reuse (across projects, duplicate effort)
+        Training/serving skew (model quality degradation over time due to gap in feature training and serving data)
+        Hard to serve (Reliability, low latency)
+
+Feature store for machine learning MLops, Ref: https://www.youtube.com/watch?v=ZeJdr0nZ9PA
+    Demo
+    Feature store - Centralised repository for sharing feature across the org for machine learning and dashboard, KPI etc purpose.
+    Fig: FeatureStore, MLInfrastructure, RolesAndOwnership
+
+How Robinhood Built a Feature Store Using Feast | apply() meetup 2021, Ref: https://www.youtube.com/watch?v=-DgInoUa0uI
+
+MLOps with a Feature Store: Filling the Gap in ML Infrastructure | Fabio Buso, Logical Clocks AB, Ref: https://www.youtube.com/watch?v=WwKx3Nvd-fg
+
+Feature Stores for MLOps with Mike del Balso - #420, Ref: https://www.youtube.com/watch?v=kty5JVc0b8w
+    1. Reusability is hard to achieve, can be done to some extent by collaboration
+    2. Two type of pipeline
+        2.1 Operational pipeline (Things run everyday, have SLA)
+        2.2 and analytical data pipeline (does not used in prod but used in forcasting)
+    3. Challenge is org don't have data maturity and they are building ml maturity on top of that.
+    4. Layers of feature store
+        4.1 Transformational layer
+        4.2 Storage layer
+        4.3 Serving layer (Unified)
+        4.4 Unified retrieval interface for online and offline
+        4.5 Monitoring layer
+    5. Checkout the feature store of Gojek, Uber
+    6. Whose responsibility the model is .. ml engg, data engg mlops engg? The process is evolving. The ans is yet to see, talk to experienced people.
+
+Feature Store (Feast) in Azure (Machine Learning), Ref: https://www.youtube.com/watch?v=5Md-xfA6FQY
+
+Announcing Databricks Machine Learning, Feature Store, and AutoML | Keynote Data + AI Summit NA 2021, Ref: https://www.youtube.com/watch?v=zQEiwJqqeeA
+
+Enable Production ML with Databricks Feature Store, Ref: https://www.youtube.com/watch?v=ia5ZxFDPPzo
+
+Unified MLOps: Feature Stores & Model Deployment, Ref: https://www.youtube.com/watch?v=TsCdqpOMn-U
+
+Rethinking Feature Stores, Ref: https://www.youtube.com/watch?v=KjgLm4JnpgE
+
+Apply() Meetup | How to choose the right online store for your ML features., Ref: https://www.youtube.com/watch?v=osxzKxiznm4
+
+ML Feature Stores with Redis: Past, Present, and Future with Nava Levy, Ref: https://www.youtube.com/watch?v=VQ_1kZAsqUM
+    Getting started tutorials with Feast and Feathr
+    --- Linkedin's Feathr on Azure with Redis: https://github.com/linkedin/feathr/blob/main/docs/quickstart.md
+    --- Feast with Redis quickstart: https://redis.com/blog/feast-with-redis-tutorial-for-machine-learning/
+    --- Feast on Azure with Redis: https://github.com/Azure/feast-azure
+    -Feature Stores articles
+    --- Building feature stores with Redis: https://redis.com/blog/building-feature-stores-with-redis-introduction-to-feast-with-redis
+    --- Feature stores for real-time AI and machine learning: https://www.kdnuggets.com/2022/03/feature-stores-realtime-ai-machine-learning.html
+    -Feature Store benchmarks
+    --- Feast: https://feast.dev/blog/feast-benchmarks/
+    --- Tecton: https://www.tecton.ai/blog/announcing-support-for-redis/
+    --- DoorDash: https://doordash.engineering/2020/11/19/building-a-gigascale-ml-feature-store-with-redis/
+
+Building a Real-Time ML Pipeline with a Feature Store - MLOps Live #16, Ref: https://www.youtube.com/watch?v=iCGQR7BSRxs
+    1. Challenges:
+        1.1 Performance - To calculate feature in real time or live data at scale
+        1.2 Robust transformations - aggregations on sliding windows
+        1.3 Enrichment - Enrich real time events with historical and operational data
+        1.4 Consistency - Between training and serving data otherwise model performance will be impacted
+        1.5 Data drift - Based on data drift, model monitoring
+        1.6 Feature reuse
+        1.7 Feature versioning - Aligning feature with model and feature version in production
+
+Databricks - Databricks Feature Store Co-designed with a Data and MLOps Platform, Ref: https://www.youtube.com/watch?v=UySbya9ceXg
+    Fig: DatabricksFeatureStoreDesign
+
+RedisConf 2021: Redis as an online feature store, Ref: https://www.youtube.com/watch?v=F6vwj6bl1Wc
+
+Sagemaker
+    1. AWS re:Invent 2020: Amazon SageMaker Feature Store: Store, discover, & share features for ML apps
+        1.1 Ref: https://www.youtube.com/watch?v=pEg5c6d4etI
+    2. Amazon SageMaker Feature Store Deep Dive Demo
+        2.1 Ref: https://www.youtube.com/watch?v=mHEUlPFT6xg
+
+Data store comparison, Ref: https://kth.diva-portal.org/smash/get/diva2:1556387/FULLTEXT01.pdf
+
+Supporting multiple online feature stores #2383, Ref: https://github.com/feast-dev/feast/issues/2383
