@@ -1,0 +1,57 @@
+1. Small file issue in hive
+    1.1 Problem
+        A small file is one which is significantly smaller than the HDFS block size (default 64MB). If you're storing small files,
+        then you probably have lots of them (otherwise you wouldn't turn to Hadoop), and the problem is that HDFS can't handle lots
+        of files.
+        In HDFS a file is considered smaller, if it is significantly smaller than the HDFS default block size (I.e. 128mb).
+        To make HDFS faster all file names and block addresses are stored in Namenode memory.
+    1.2 Solution, Ref: https://community.cloudera.com/t5/Support-Questions/Controlling-Number-of-small-files-while-inserting-into-Hive/m-p/224242#M186106
+        set hive.merge.tezfiles=true;
+        set hive.merge.smallfiles.avgsize=128000000;
+        set hive.merge.size.per.task=128000000;
+
+2. Small file problem in Spark
+    2.1 Problem
+        Having a significantly smaller object file can result in wasted space on the disk since the storage is optimized to support
+        fast read and write for minimal block size. To understand why this happens, you need first to understand how cloud storage
+        works with the Apache Spark engine.
+    2.2 Solution
+        First is trying to stop the root cause.
+        Second, being identifying these small files locations + amount.
+        Finally being, compacting the small files to larger files equivalent to block size or efficient partition size of the processing framework.
+
+3. Small file problem in databricks,
+    3.1 Ref:
+        3.1.1 https://www.databricks.com/session_na21/degrading-performance-you-might-be-suffering-from-the-small
+        3.1.2 https://data-driven.com/2020/08/databricks-performance-fixing-the-small-file-problem-with-delta-lake/
+
+    3.2 Optimize performance
+        Delta lake supports two layout algorithms to optimize query performance.
+
+        Compaction (bin-packing)
+        bin-packing improves the read performance by coalescing small files to larger files.
+        If you have a larger data set you can optimize subset of data
+        bin-packing is idempotent, therefore if you run it twice on the same dataset, then the second run will not have an impact.
+        Z-Ordering (multi-dimensional clustering)
+        Z-Ordering on the other hand collating related information sets to files.
+        If you expect a column to be commonly used in query predicates and if that column has high cardinality (that is, a large number of distinct values), then use ZORDER BY.
+
+    3.3 Auto Optimize
+        If your Databricks runtime is above 5.5, then you can get the benefits of the auto optimize feature where the small files automatically get compacted during each write.
+
+        Auto Optimize is particularly useful in the following scenarios:
+
+        Streaming use cases where latency in the order of minutes is acceptable
+        MERGE INTO is the preferred method of writing into Delta Lake
+        CREATE TABLE AS SELECT or INSERT INTO are commonly used operations
+        Auto Optimize comprises with two features
+
+        Optimized writes
+        Azure Databricks automatically optimize the partition size based on actual data and tries to write 128MB files for each partition table. When this is enabled repartition(deltaLakePartitionNum) is not required.
+        Auto Compaction
+        After individual writes Databricks check if the files can further be compacted and then run a quick OPTIMIZE job
+        Few limitations of Auto Optimize
+
+        Azure Databricks does not support Z-Ordering with Auto Compaction as Z-Ordering is significantly more expensive than just compaction.
+
+        Auto Compaction generates smaller files (128 MB) than OPTIMIZE (1 GB).

@@ -49,3 +49,5 @@ Redis at Lyft, Ref: https://www.youtube.com/watch?v=U4WspAKekqM
 Redis follow distributed cluster (master/slave architecture). Ref: https://www.youtube.com/watch?v=yCrSMdjV4sE
 
 Redis scalability, Ref: https://www.youtube.com/watch?v=55TFuBMFWns -> chk RedisUsage.png
+
+RedisDays 2019 - New York How Shopify is Scaling Up Its Redis Message Queues, Ref: https://www.youtube.com/watch?v=hu6Q6s0432A

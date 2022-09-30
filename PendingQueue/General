@@ -13,3 +13,28 @@
     12.1 https://github.com/redis/redis-doc/issues
     12.2 https://github.com/redis/redis/issues
     12.3 https://issues.apache.org/jira/projects/ZOOKEEPER/issues/ZOOKEEPER-3775?filter=allissues&orderby=priority+ASC%2C+updated+DESC
+13. LLD problem statement suggestions
+    13.1 Design a forecasting and anamoly detection service
+    13.2 Design a subscription management service
+    13.3 Design an online coding judge
+    13.4 Design a deployment management system like jenkins
+    13.5 Design a blogging platform like medium
+    13.6 Design stackoverflow
+    13.7 Design Missile navigation system
+    13.8 Design stock exchange like NSE
+    13.9 Design UPI platform
+    13.10 Design serverless cloud functions
+    13.11 Design a RBAC system
+    Design a URL shortener (e.g. Bitly)
+    Design a social media website (e.g. Twitter)
+    Design a video watching website (e.g. YouTube)
+    Design a chatting service (e.g. Telegram, Slack, Discord)
+    Design a file sharing service (e.g. Google Drive, Dropbox)
+    Design a ride sharing service (e.g. Uber, Lyft)
+    Design a photo sharing service (e.g. Flickr, Pinterest)
+    Design an e-commerce website (e.g. Amazon, eBay)
+    Design a jobs portal (e.g. LinkedIn, Indeed)
+    Design a web crawler (e.g. Google)
+14. https://www.jiocinema.com/movies/manto?type=0&id=32a07cd02de511e9a4d71726210f0209
+    https://www.jiocinema.com/movies/dev-anand-s-biography?type=0&id=60309470c11211eab06915b9b94f3b3c
+    https://www.jiocinema.com/movies/a-night-to-regret-?type=0&id=9da20ad078f311ea9851635b182fc40d

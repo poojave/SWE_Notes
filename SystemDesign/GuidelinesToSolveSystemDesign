@@ -1,0 +1,28 @@
+System Design Introduction For Interview, Ref: https://www.youtube.com/watch?v=UzLMhqg3_Wc&list=PLrmLmBdmIlps7GJJWW9I7N0P0rB0C3eY2
+1. ABCD of system design
+    1.1 Ask good questions (What features to work upon etc)
+    1.2 How much the system should scale (rps, latencies)
+    1.3 Clear and organised thinking (Define the API, actors)
+    1.4 Drive discussions (You should be talking 80% time and interviewer 20% of time)
+
+2. System design introduction
+    2.1 Features
+    2.2 Define APIs
+    2.3 Availability
+    2.4 Latency performance
+    2.5 Scalability
+    2.6 Durability
+    2.7 Class Diagram
+    2.8 Security and Privacy
+    2.9 Cost effective
+
+3. Concepts
+    3.1 http vs https vs websockets
+    3.2 TCP/IP model
+    3.3 ipv4 vs ipv6
+    3.4 TCP vs UDP
+    3.5 DNS lookup
+    3.6 Https vs TLS
+    3.7 Public key infrastructure and certificate authority
+    3.8 Symm and Asymm key
+    3.9
