@@ -1,0 +1,33 @@
+Design url-shortner like bit.ly, Ref: https://www.youtube.com/watch?v=C7_--hAhiaM&list=PL6W8uoQQ2c63W58rpNFDwdrBnq5G3EfT7&index=4
+
+Requirements:
+    1. Long url with 7-8 character short url mapping
+    2. Highly available
+    3. Unique mapping
+    4. Consistency
+
+Challenge:
+    1. Fast and unique hash generation with no limit (4 character vs 10 character)
+    2. Long to short url fast mapping resolution
+
+Architecture
+
+- URL shortening logic
+- database to use
+- MD5 (32 characters), SHA-1 (40 characters) and their disadvantage
+- Base62 implementation
+- Unique ID generator in distributed network
+- HLD of the complete system
+
+    (0-9)10, (a-z)26, (A-Z)26 = 62 characters
+    62^7= 365 trillion combinations
+    627 = 3521614606208 · 628 = 218340105584896
+
+
+    1. Create short url
+        POST /createshorturl?url=https://www.abc.com?x=a&y=b
+        200 {"short_url": xc4ej6gdf}
+
+    2. Fetch short url
+        GET /shorturl?url=xc4ej6gdf
+        200 {"long_url": "https://www.abc.com?x=a&y=b"}

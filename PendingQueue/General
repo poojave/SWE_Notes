@@ -25,16 +25,53 @@
     13.9 Design UPI platform
     13.10 Design serverless cloud functions
     13.11 Design a RBAC system
-    Design a URL shortener (e.g. Bitly)
-    Design a social media website (e.g. Twitter)
-    Design a video watching website (e.g. YouTube)
-    Design a chatting service (e.g. Telegram, Slack, Discord)
-    Design a file sharing service (e.g. Google Drive, Dropbox)
-    Design a ride sharing service (e.g. Uber, Lyft)
-    Design a photo sharing service (e.g. Flickr, Pinterest)
-    Design an e-commerce website (e.g. Amazon, eBay)
-    Design a jobs portal (e.g. LinkedIn, Indeed)
-    Design a web crawler (e.g. Google)
-14. https://www.jiocinema.com/movies/manto?type=0&id=32a07cd02de511e9a4d71726210f0209
-    https://www.jiocinema.com/movies/dev-anand-s-biography?type=0&id=60309470c11211eab06915b9b94f3b3c
-    https://www.jiocinema.com/movies/a-night-to-regret-?type=0&id=9da20ad078f311ea9851635b182fc40d
+    13.12 Design a URL shortener (e.g. Bitly)
+    13.13 Design a social media website (e.g. Twitter)
+    13.14 Design a video watching website (e.g. YouTube)
+    13.15 Design a chatting service (e.g. Telegram, Slack, Discord)
+    13.16 Design a file sharing service (e.g. Google Drive, Dropbox)
+    13.17 Design a ride sharing service (e.g. Uber, Lyft)
+    13.18 Design a photo sharing service (e.g. Flickr, Pinterest)
+    13.19 Design an e-commerce website (e.g. Amazon, eBay)
+    13.20 Design a jobs portal (e.g. LinkedIn, Indeed)
+    13.21 Design a web crawler (e.g. Google)
+14. https://www.confluent.io/nominate/
+15. https://www.microsoft.com/en-ie/training-days/azure/fundamentals?wt.mc_id=AID3042938_QSG_566510
+    https://learn.microsoft.com/en-gb/certifications/exams/ms-700
+    https://www.microsoft.com/en-ie/training-days/azure/fundamentals?wt.mc_id=AID3042938_QSG_566510
+    https://pulse.microsoft.com/en/skill-forward-en/na/fa1-get-rewarded-for-gaining-tech-skills-and-free-certifications-at-the-microsoft-spring-skills-challenge/
+16. 📣 Apply to Speak at the Global Conference 2023
+    We are looking for 🌟inspiring & diverse🌟 speakers to ignite fellow women in tech and allies by sharing motivational stories and technical expertise at the Women in Tech Global Conference 2023.
+    📝 Tracks and topics include:
+    Leadership, Digital Transformation, D&I, Cloud Technologies, Product Development, UX, Design, AI, Automation, Data Science and Sustainability amongst others.
+    📅 Application deadline: 1 February 2023
+17. Hashmap internal implementation
+
+https://pts.measureup.com/web/PBS/LMS/index.php?l=1&k=8105448&tam=1933465&role=1&course=at_test202206080516201654665380
+Exam 1 == 45%
+
+D. Conditional Access
+D. an authorization XXXX B. an authentication
+same
+C. Azure Blueprints
+A- 1, B- 3, C-2 XXXX A3, B2, C1
+C. Hybrid cloud
+C. Geo-redundant storage (GRS)
+A. ExpressRoute, B. Point-to-Site (P2S) VPN XXXX C. Site-to-Site VPN
+B. Resource groups
+C. Network layer, D. Application layer XXXX B. Perimeter layer
+B. Azure Logic Apps
+B. Azure PowerShell, C. Azure Command Line Interface (CLI) XXXX A. Azure portal
+C. Azure Batch
+A- 3, B- 2, C-1 XXXX A3, B1, C2
+C. An Azure virtual machine scale set
+C. Geo-distribution
+B. A point-to-point Ethernet connection
+A. Resource groups, B. Management groups XXXX B. Management groups
+A. Azure Monitor XXXX C. Azure Service Health
+B-1, A- 2
+Exam 2 == 60%
+
+Exam 3 == 64.58%
+They are two very different tools. The Azure Calculator is meant to get pricing when you know exactly what you need in Azure, or want to look up pricing for the resources you know about. TCO Calculator is meant when you want to estimate how much it would cost to move your resources from on-premises to Azure, by inputting what you are currently using, and letting it convert that into Azure equivalence.
+
